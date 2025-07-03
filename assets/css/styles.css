@@ -525,12 +525,16 @@ body {
     .controls {
         padding: 10px;
     }
+    .content {
+        height: 60vh;
+        min-height: 300px;
+    }
     .map-container {
-        min-height: 220px;
-        height: 260px;
+        min-height: 200px;
+        height: 100%;
     }
     #map {
-        min-height: 220px;
+        min-height: 200px;
         height: 100%;
     }
     .modal-content {
