@@ -2,6 +2,7 @@
 .dockerignore
 Dockerfile
 docker-compose.yml
+docker-compose.yml.template
 README.md
 LICENSE
 .git

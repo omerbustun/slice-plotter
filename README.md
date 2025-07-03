@@ -39,6 +39,15 @@ Kendi sunucunuzda çalıştırmak için Docker kullanın (aşağıya bakın)
 
 ### Docker Compose ile (Önerilen)
 
+İlk olarak, Docker Compose konfigürasyon dosyasını hazırlayın:
+
+```bash
+# Template dosyasını docker-compose.yml olarak kopyalayın
+cp docker-compose.yml.template docker-compose.yml
+```
+
+Ardından uygulamayı çalıştırın:
+
 ```bash
 docker-compose up -d
 ```
