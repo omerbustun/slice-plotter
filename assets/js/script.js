@@ -8,11 +8,39 @@ let touchTimer = null;
 let isMobile = window.innerWidth <= 768;
 
 function initMap() {
-    map = L.map('map').setView([39.0, 35.0], 6);
+    console.log('Initializing map...');
+    var initialZoom = window.innerWidth <= 768 ? 5 : 6;
+    map = L.map('map').setView([39.0, 35.0], initialZoom);
+    console.log('Map created successfully');
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
+    
+    const mapContainer = document.getElementById('map');
+
+    // Use ResizeObserver to handle size changes
+    if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                if (entry.target.id === 'map') {
+                    map.invalidateSize();
+                }
+            }
+        });
+        observer.observe(mapContainer);
+    } else {
+        // Fallback for older browsers
+        window.addEventListener('resize', () => {
+            map.invalidateSize();
+        });
+    }
+
+    // Hide loading indicator once map is initialized
+    const loadingDiv = document.getElementById('mapLoading');
+    if (loadingDiv) {
+        loadingDiv.style.display = 'none';
+    }
 
     map.on('contextmenu', function(e) {
         contextMenuLatLng = e.latlng;
@@ -81,6 +109,13 @@ function initMap() {
     
     window.addEventListener('resize', function() {
         isMobile = window.innerWidth <= 768;
+        
+        // Force map to resize when window is resized
+        if (map) {
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 100);
+        }
     });
 }
 
@@ -298,7 +333,7 @@ function clearAll() {
     currentSliceData = null;
 }
 
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function() {
     initMap();
     
     document.getElementById('sliceModal').addEventListener('click', function(e) {
@@ -306,4 +341,13 @@ window.onload = function() {
             closeSliceModal();
         }
     });
-};
+    
+    // Add orientation change handler for mobile devices
+    window.addEventListener('orientationchange', function() {
+        if (map) {
+            setTimeout(function() {
+                map.invalidateSize();
+            }, 500);
+        }
+    });
+});

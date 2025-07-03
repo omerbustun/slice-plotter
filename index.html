@@ -64,7 +64,12 @@
         
         <div class="content">
             <div class="map-container">
-                <div id="map"></div>
+                <div id="map">
+                    <div class="map-loading" id="mapLoading">
+                        <div class="loading-spinner"></div>
+                        <p>Harita yükleniyor...</p>
+                    </div>
+                </div>
                 <div id="contextMenu" class="custom-context-menu" style="display: none;">
                     <div class="context-menu-item" onclick="addPointAtLocation()">
                         📍 Buraya Nokta Ekle
