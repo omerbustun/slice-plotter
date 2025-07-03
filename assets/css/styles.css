@@ -528,17 +528,19 @@ body {
     .content {
         display: flex;
         flex-direction: column;
-        height: 60vh;
         min-height: 300px;
+        height: auto;
     }
     .map-container {
         flex: 1 1 auto;
         min-height: 200px;
-        height: auto;
+        height: 300px;
+        position: relative;
     }
     #map {
         min-height: 200px;
         height: 100%;
+        position: relative;
     }
     .modal-content {
         width: 98%;
