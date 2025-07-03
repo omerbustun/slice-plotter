@@ -195,7 +195,7 @@ function updateShowSliceButton() {
 function updateStatus() {
     const status = document.getElementById('status');
     if (points.length === 0) {
-        status.textContent = 'Nokta eklemek için haritaya sağ tıklayın';
+        status.textContent = 'Nokta eklemek için haritaya sağ tıklayın (mobilde uzun basın)';
     } else if (points.length === 1) {
         status.textContent = 'Kesit göstermek için en az bir nokta daha ekleyin';
     } else {
