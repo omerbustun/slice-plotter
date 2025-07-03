@@ -526,12 +526,15 @@ body {
         padding: 10px;
     }
     .content {
+        display: flex;
+        flex-direction: column;
         height: 60vh;
         min-height: 300px;
     }
     .map-container {
+        flex: 1 1 auto;
         min-height: 200px;
-        height: 100%;
+        height: auto;
     }
     #map {
         min-height: 200px;
