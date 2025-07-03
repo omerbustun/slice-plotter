@@ -532,15 +532,16 @@ body {
         height: auto;
     }
     .map-container {
-        flex: 1 1 auto;
         min-height: 200px;
         height: 300px;
         position: relative;
+        flex: none;
     }
     #map {
         min-height: 200px;
         height: 100%;
         position: relative;
+        touch-action: pan-y;
     }
     .modal-content {
         width: 98%;
